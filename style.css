@@ -410,3 +410,42 @@ button:hover {
     margin-top: 20px;
     font-weight: bold;
 }
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .support-container {
+        width: 90%;
+        right: 5%;
+        max-width: none;
+        transition: transform 0.3s ease;
+    }
+    
+    .support-container.collapsed {
+        transform: translateX(120%);
+    }
+    
+    .support-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .close-btn {
+        font-size: 24px;
+        color: gold;
+        padding: 0 10px;
+        display: none;
+    }
+    
+    .support-container.collapsed .support-info {
+        display: none;
+    }
+    
+    .support-container:not(.collapsed) .close-btn {
+        display: block;
+    }
+    
+    .support-container.collapsed .tg-logo {
+        margin-right: 0;
+    }
+}
