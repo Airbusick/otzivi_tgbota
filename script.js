@@ -214,32 +214,26 @@ function createReviewElement(review) {
     return element;
 }
 document.addEventListener('DOMContentLoaded', function() {
+    const supportContainer = document.querySelector('.support-container');
     const toggleButton = document.getElementById('toggleSupport');
-    const supportContent = document.querySelector('.support-content');
-    const closeBtn = document.querySelector('.close-btn');
-
-    if (toggleButton && supportContent) {
-        // Проверяем мобильное устройство
+    
+    if (supportContainer && toggleButton) {
         const isMobile = window.matchMedia("(max-width: 768px)").matches;
         
         if (isMobile) {
+            supportContainer.classList.add('collapsed');
+            
             toggleButton.addEventListener('click', function() {
-                supportContent.classList.toggle('active');
+                supportContainer.classList.toggle('collapsed');
             });
             
+            const closeBtn = supportContainer.querySelector('.close-btn');
             if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    supportContent.classList.remove('active');
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    supportContainer.classList.add('collapsed');
                 });
             }
-            
-            document.addEventListener('click', function(e) {
-                if (!supportContent.contains(e.target) && e.target !== toggleButton) {
-                    supportContent.classList.remove('active');
-                }
-            });
-        } else {
-            supportContent.style.display = 'block';
         }
     }
 });
