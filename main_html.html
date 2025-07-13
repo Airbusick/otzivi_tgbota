@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы о боте для знакомств</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="container">
+        <div class="rating-section">
+            <h1 class="rating-title">Общий рейтинг: 4,7</h1>
+            <div class="stars">
+                <img src="picture/zvezda.png" alt="Star" class="star">
+                <img src="picture/zvezda.png" alt="Star" class="star">
+                <img src="picture/zvezda.png" alt="Star" class="star">
+                <img src="picture/zvezda.png" alt="Star" class="star">
+                <img src="picture/zvezda.png" alt="Star" class="star">
+            </div>
+        </div>
+        
+        <div class="reviews-section">
+            <h2>Отзывы</h2>
+            <div class="reviews-container" id="reviewsContainer">
+                <!-- Отзывы будут загружаться здесь -->
+            </div>
+            
+            <div class="add-review">
+                <h3>Добавить отзыв</h3>
+                <form id="reviewForm">
+                    <input type="text" id="userName" placeholder="Введите имя..." required>
+                    <textarea id="userReview" placeholder="Оставьте отзыв..." required></textarea>
+                    <div class="rating-input">
+                        <span>Оценка:</span>
+                        <div class="rating-stars">
+                            <span data-value="1">★</span>
+                            <span data-value="2">★</span>
+                            <span data-value="3">★</span>
+                            <span data-value="4">★</span>
+                            <span data-value="5">★</span>
+                        </div>
+                    </div>
+                    <button type="submit">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+<div class="support-container">
+    <img src="picture/tg.png" alt="Telegram" class="tg-logo">
+    <div class="support-info">
+        <p>Основная поддержка телеграм-бота</p>
+        <p>Для связи с технической поддержкой (в случае обнаружения багов, уязвимостей и т.д.) - обратитесь по этому адресу: @oirbus3459</p>
+        <p>Для связи с информационной поддержкой - обратитесь по этому адресу: @invoker866</p>
+    </div>
+</div>
+</body>
+</html>
