@@ -213,3 +213,27 @@ function createReviewElement(review) {
 
     return element;
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const supportContainer = document.querySelector('.support-container');
+    const toggleButton = document.getElementById('toggleSupport');
+    
+    if (supportContainer && toggleButton) {
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        
+        if (isMobile) {
+            supportContainer.classList.add('collapsed');
+            
+            toggleButton.addEventListener('click', function() {
+                supportContainer.classList.toggle('collapsed');
+            });
+            
+            const closeBtn = supportContainer.querySelector('.close-btn');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    supportContainer.classList.add('collapsed');
+                });
+            }
+        }
+    }
+});
