@@ -2,7 +2,6 @@ let userIP = '';
 const MAX_REVIEWS_FROM_JSON = 200; // Максимальное количество отзывов из data.json
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Получаем IP пользователя
     fetch('https://api.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
@@ -90,7 +89,6 @@ function handleFormSubmit() {
         return;
     }
 
-    // Дополнительная проверка перед сохранением
     if (getCookie("hasSubmittedReview") === "true") {
         alert('Вы уже оставили отзыв ранее!');
         return;
@@ -132,11 +130,9 @@ function getSavedReviews() {
     return reviews ? JSON.parse(reviews) : [];
 }
 
-// --- Загрузка и отображение отзывов ---
 function loadAndDisplayReviews() {
     Promise.all([loadStaticReviews(), Promise.resolve(getSavedReviews())])
         .then(([staticReviews, userReviews]) => {
-            // Ограничиваем количество отзывов из data.json
             const limitedStaticReviews = staticReviews.slice(0, MAX_REVIEWS_FROM_JSON);
             const allReviews = [...userReviews, ...limitedStaticReviews];
             displayReviews(allReviews);
@@ -156,10 +152,9 @@ function loadStaticReviews() {
         .then(reviews => {
             if (!Array.isArray(reviews)) return [];
 
-            // Помечаем только 50% отзывов как "Подтверждённый Клиент"
             return reviews.map((review, index) => ({
                 ...review,
-                isStatic: index % 6 === 0 // Каждый второй будет помечен
+                isStatic: index % 6 === 0 
             }));
         })
         .catch(error => {
@@ -237,3 +232,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
